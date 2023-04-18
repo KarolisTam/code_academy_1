@@ -1,34 +1,38 @@
-# vartotojo_vardas = input('Iveskite savo varda:')
-# vartotojo_amzius = input('Iveskite savo amziu:')
+import os
 
-# vartotojo_amzius100 = 100 - int(vartotojo_amzius)
+saldytuvas = {"mesa":1}
+def clear():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
-# print("Jusu vardas {}, jums sueis 100 metu po {} metu.".format(vartotojo_vardas, vartotojo_amzius100))
+def prideti_produkta(pavadinimas, kiekis):
+    global saldytuvas
+    if pavadinimas in saldytuvas:
+        saldytuvas[pavadinimas] += kiekis
+    else:
+        saldytuvas[pavadinimas] = kiekis
 
-# vartotojo_ugis = input('Iveskite ugi (cm):')
-# vartotojo_ugism = int(vartotojo_ugis) / 100
+def ivesti_produkta():
+    pavadinimas1 = input("Įveskite produktą: ")
+    kiekis = float(input("Įveskite produkto kiekį: "))
 
-# print('Ugis (cm): {}/n Ugis (m): {}'.format(vartotojo_ugis, vartotojo_ugism))
-
-# vartotojo_atlyginimas = input('Iveskite atlyginima:')
-# menesinis_mokescio_atskaitymas = (int(vartotojo_atlyginimas) * 21) / 100
-# menesinis_atlyginimas = int(vartotojo_atlyginimas) - menesinis_mokescio_atskaitymas
-
-
-# print(f'Menesinis talyginimas po mokesciu: {menesinis_atlyginimas:.0f}')
-
-parinkimas = input('Jei norite temperatura keisti i Celsijus rasykite c, jei i Farenheitus rasykite f:')
-temperatura = input('Iveskite temperatura, kuria norite konvertuoti:')
-
-if parinkimas == 'c':
-    atsakymas = (float(temperatura) - 32) * (5/9)
-    print(f'Temperatura Celsijum: {atsakymas}')
-elif parinkimas == 'f':
-    atsakymas = (float(temperatura) * (9/5)) + 32
-    print(f'Temperatura Farenheito: {atsakymas}')
-
-print('Veikia')
-
-print("Petras cia buvo")
-
-print('Karolis')
+while True:
+    clear()
+    print("labas pasirinkite ka norite padaryti?")
+    print("1 - perziureti saldytuva", "2 - prideti produka", "3 - issimti produkta", "4 - suskaiciuoti turinio svori", "9 - iseiti" )
+    user_input = int(input("Irasykite savo pasirinkima: "))
+    if user_input == 1:
+        clear()
+        print(saldytuvas)
+    if user_input == 2:
+        print(prideti_produkta(pavadinimas="", kiekis=""))
+    if user_input == 3:
+        os.system('cls')
+        print(user_input)
+    if user_input == 4:
+        os.system('cls')
+        print(user_input)
+    # if user_input != 1 or 2 or 3 or 4:
+    #     break
